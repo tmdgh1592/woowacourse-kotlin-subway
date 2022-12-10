@@ -61,6 +61,7 @@ class SubwayController(
     private fun addStation() {
         val addingSubway = inputView.inputAddingSubway()
         stationService.addStation(addingSubway)
+        printAddingResult()
     }
 
     private fun removeStation() {
@@ -74,6 +75,10 @@ class SubwayController(
         outputView.printStations(stations.getStationsNames())
     }
 
+    private fun printAddingResult() {
+        outputView.printMessage(SUCCESS_TO_ADD_STATION_MESSAGE)
+    }
+
     private fun printRemovingResult() {
         outputView.printMessage(SUCCESS_TO_REMOVE_STATION_MESSAGE)
     }
@@ -81,5 +86,6 @@ class SubwayController(
     companion object {
         private const val QUIT_OPTION = "Q"
         private const val SUCCESS_TO_REMOVE_STATION_MESSAGE = "\n[INFO] 지하철 역이 삭제되었습니다.\n"
+        private const val SUCCESS_TO_ADD_STATION_MESSAGE = "\n[INFO] 지하철 역이 등록되었습니다.\n"
     }
 }
