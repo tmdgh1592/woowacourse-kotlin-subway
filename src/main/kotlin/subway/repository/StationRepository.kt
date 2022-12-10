@@ -1,5 +1,6 @@
-package subway.domain
+package subway.repository
 
+import subway.domain.Station
 import java.util.*
 
 object StationRepository {
