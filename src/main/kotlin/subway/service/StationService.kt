@@ -16,8 +16,8 @@ class StationService {
     }
 
     fun removeStation(station: String) {
-        val isContainStation = LineRepository.isContainStation(station)
-        if (isContainStation) {
+        val isRegisteredInLine = LineRepository.isRegisteredInLine(station)
+        if (isRegisteredInLine) {
             throw IllegalArgumentException(UNABLE_TO_REMOVE_STATION_EXCEPTION_MESSAGE)
         }
 

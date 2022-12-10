@@ -24,7 +24,7 @@ object LineRepository {
         }
     }
 
-    fun isContainStation(station: String): Boolean {
+    fun isRegisteredInLine(station: String): Boolean {
         lines.forEach { line ->
             if (line.contains(station)) {
                 return true
