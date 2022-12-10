@@ -65,9 +65,15 @@ class SubwayController(
     private fun removeStation() {
         val removingSubway = inputView.inputRemovingSubway()
         stationService.removeStation(removingSubway)
+        printRemovingResult()
+    }
+
+    private fun printRemovingResult() {
+        outputView.printMessage(SUCCESS_TO_REMOVE_STATION_MESSAGE)
     }
 
     companion object {
         private const val QUIT_OPTION = "Q"
+        private const val SUCCESS_TO_REMOVE_STATION_MESSAGE = "\n[INFO] 지하철 역이 삭제되었습니다.\n"
     }
 }
