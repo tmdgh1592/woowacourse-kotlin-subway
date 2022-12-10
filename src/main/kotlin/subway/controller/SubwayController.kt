@@ -45,13 +45,20 @@ class SubwayController(
      * */
 
     private fun manageSubway() {
-        val option = selectSubwayManagementOption()
+        when(selectSubwayManagementOption()) {
+            "3" -> showStations()
+        }
     }
 
     private fun selectSubwayManagementOption(): String {
         val option = repeat(inputView::selectSubwayManagementOption)
         outputView.printEnter()
         return option
+    }
+
+    private fun showStations() {
+        val stations = stationService.getStations()
+        outputView.printStations(stations.getStationsNames())
     }
 
     companion object {
