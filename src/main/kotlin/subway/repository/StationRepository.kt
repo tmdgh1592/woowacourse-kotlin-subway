@@ -12,8 +12,8 @@ object StationRepository {
     fun stations(): List<Station> =
         Collections.unmodifiableList(stations)
 
-    fun addStation(station: Station) {
-        stations.add(station)
+    fun addStation(stationName: String) {
+        stations.add(Station(stationName))
     }
 
     fun deleteStation(name: String?): Boolean {
@@ -21,4 +21,7 @@ object StationRepository {
             station.getName() == name
         }
     }
+
+    fun isExist(stationName: String) = stations.contains(Station(stationName))
+
 }

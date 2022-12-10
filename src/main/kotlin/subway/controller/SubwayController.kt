@@ -46,6 +46,7 @@ class SubwayController(
 
     private fun manageSubway() {
         when(selectSubwayManagementOption()) {
+            "1" -> repeat(this::addStation)
             "2" -> repeat(this::removeStation)
             "3" -> showStations()
         }
@@ -57,15 +58,20 @@ class SubwayController(
         return option
     }
 
-    private fun showStations() {
-        val stations = stationService.getStations()
-        outputView.printStations(stations.getStationsNames())
+    private fun addStation() {
+        val addingSubway = inputView.inputAddingSubway()
+        stationService.addStation(addingSubway)
     }
 
     private fun removeStation() {
         val removingSubway = inputView.inputRemovingSubway()
         stationService.removeStation(removingSubway)
         printRemovingResult()
+    }
+
+    private fun showStations() {
+        val stations = stationService.getStations()
+        outputView.printStations(stations.getStationsNames())
     }
 
     private fun printRemovingResult() {

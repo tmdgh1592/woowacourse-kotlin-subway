@@ -4,5 +4,10 @@ class Station(private val name: String) {
 
     fun getName(): String = name
 
-    // 추가 기능 구현
+    override fun equals(other: Any?): Boolean {
+        if (other is Station) {
+            return this.name == other.name
+        }
+        return false
+    }
 }
