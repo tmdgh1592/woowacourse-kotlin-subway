@@ -24,6 +24,15 @@ object LineRepository {
         }
     }
 
+    fun isContainStation(station: String): Boolean {
+        lines.forEach { line ->
+            if (line.contains(station)) {
+                return true
+            }
+        }
+        return false
+    }
+
     private const val ERROR_PREFIX = "[ERROR]"
     private const val NOT_EXIST_LINE_EXCEPTION_MESSAGE = "$ERROR_PREFIX 존재하지 않는 노선입니다."
 }

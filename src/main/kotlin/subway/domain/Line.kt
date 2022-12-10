@@ -5,6 +5,11 @@ class Line(private val name: String) {
 
     fun getName() = name
 
+    fun contains(stationName: String): Boolean {
+        stations.find { it.getName() == stationName } ?: return false
+        return true
+    }
+
     fun addStation(sequence: Int, stationName: String) {
         validateDuplication(stationName)
         validateSequence(sequence - 1)

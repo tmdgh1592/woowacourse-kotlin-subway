@@ -46,6 +46,7 @@ class SubwayController(
 
     private fun manageSubway() {
         when(selectSubwayManagementOption()) {
+            "2" -> repeat(this::removeStation)
             "3" -> showStations()
         }
     }
@@ -59,6 +60,11 @@ class SubwayController(
     private fun showStations() {
         val stations = stationService.getStations()
         outputView.printStations(stations.getStationsNames())
+    }
+
+    private fun removeStation() {
+        val removingSubway = inputView.inputRemovingSubway()
+        stationService.removeStation(removingSubway)
     }
 
     companion object {
