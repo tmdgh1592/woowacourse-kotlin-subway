@@ -19,11 +19,39 @@ class SubwayController(
     override fun run() {
         do {
             val mainOption = selectMainOption()
+            performMainOption(mainOption)
         } while (mainOption != QUIT_OPTION)
     }
 
+    /**
+     * 메인 옵션
+     * */
+
+    private fun performMainOption(option: String) {
+        when(option) {
+            "1" -> manageSubway()
+        }
+    }
+
     private fun selectMainOption(): String {
-        return repeat(inputView::selectMainOption)
+        val option = repeat(inputView::selectMainOption)
+        outputView.printEnter()
+        return option
+    }
+
+
+    /**
+     * 역 관리 옵션
+     * */
+
+    private fun manageSubway() {
+        val option = selectSubwayManagementOption()
+    }
+
+    private fun selectSubwayManagementOption(): String {
+        val option = repeat(inputView::selectSubwayManagementOption)
+        outputView.printEnter()
+        return option
     }
 
     companion object {
