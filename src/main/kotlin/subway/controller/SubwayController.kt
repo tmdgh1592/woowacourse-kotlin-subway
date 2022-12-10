@@ -8,10 +8,17 @@ class SubwayController(
 ) : Controller(inputView, outputView) {
 
     override fun run() {
-        val mainOption = selectMainOption()
+        do {
+            val mainOption = selectMainOption()
+        } while (mainOption != QUIT_OPTION)
+
     }
 
     private fun selectMainOption(): String {
         return repeat(inputView::selectMainOption)
+    }
+
+    companion object {
+        private const val QUIT_OPTION = "Q"
     }
 }
