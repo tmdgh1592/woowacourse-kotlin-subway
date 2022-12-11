@@ -27,7 +27,7 @@ class InputView(
 
     fun inputAddingSubway(): String {
         println(SUBWAY_ADDING_INPUT_MESSAGE)
-        return Console.readLine()
+        return inputValidator.validateLength(Console.readLine())
     }
 
     fun inputRemovingSubway(): String {
