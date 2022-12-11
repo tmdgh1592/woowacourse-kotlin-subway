@@ -35,6 +35,11 @@ class InputView(
         return Console.readLine()
     }
 
+    fun inputAddingLine(): String {
+        println(LINE_ADDING_INPUT_MESSAGE)
+        return inputValidator.validateLength(Console.readLine())
+    }
+
 
     companion object {
         private const val MAIN_OPTION_SELECT_MESSAGE =
@@ -44,7 +49,9 @@ class InputView(
         private const val LINE_MANAGEMENT_SELECT_MESSAGE =
             "## 노선 관리 화면\n" + "1. 노선 등록\n" + "2. 노선 삭제\n" + "3. 노선 조회\n" + "B. 돌아가기\n" + "\n" + "## 원하는 기능을 선택하세요."
 
-        private const val SUBWAY_DELETE_INPUT_MESSAGE = "## 삭제할 역 이름을 입력하세요."
         private const val SUBWAY_ADDING_INPUT_MESSAGE = "## 등록할 역 이름을 입력하세요."
+        private const val SUBWAY_DELETE_INPUT_MESSAGE = "## 삭제할 역 이름을 입력하세요."
+
+        private const val LINE_ADDING_INPUT_MESSAGE = "## 등록할 노선 이름을 입력하세요."
     }
 }

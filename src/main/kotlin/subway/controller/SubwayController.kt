@@ -91,7 +91,7 @@ class SubwayController(
 
     private fun manageLine() {
         when(selectLineManagementOption()) {
-
+            "1" -> addLine()
         }
     }
 
@@ -101,6 +101,15 @@ class SubwayController(
         return option
     }
 
+    private fun addLine() {
+        val lineName = inputAddingLine()
+    }
+
+    private fun inputAddingLine(): String {
+        val option = repeat(inputView::inputAddingLine)
+        outputView.printEnter()
+        return option
+    }
 
     /**
      * 4. 지하철 노선도 출력

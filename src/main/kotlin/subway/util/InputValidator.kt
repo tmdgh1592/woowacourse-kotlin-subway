@@ -22,8 +22,16 @@ class InputValidator {
         return option
     }
 
+    fun validateLength(text: String, length: Int = 2): String {
+        if (text.length < length) {
+            throw IllegalArgumentException(INVALID_LENGTH_EXCEPTION_MESSAGE.format(length))
+        }
+        return text
+    }
+
     companion object {
         private const val ERROR_PREFIX = "[ERROR]"
-        const val INVALID_OPTION_EXCEPTION_MESSAGE = "$ERROR_PREFIX 선택할 수 없는 기능입니다."
+        private const val INVALID_OPTION_EXCEPTION_MESSAGE = "$ERROR_PREFIX 선택할 수 없는 기능입니다."
+        private const val INVALID_LENGTH_EXCEPTION_MESSAGE = "$ERROR_PREFIX 길이가 %d 이상이어야 합니다."
     }
 }
