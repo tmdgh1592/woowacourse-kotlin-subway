@@ -202,7 +202,12 @@ class SubwayController(
         val station = inputStation()
         val sequence = inputSequence()
 
-        printAddingSectionResult()
+        try {
+            lineService.addSection(sequence, line, station)
+            printAddingSectionResult()
+        } catch (error: IllegalArgumentException) {
+            outputView.printError(error)
+        }
     }
 
     private fun inputLine(): String {

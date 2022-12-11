@@ -2,25 +2,24 @@ package subway.service
 
 import subway.domain.Line
 import subway.repository.LineRepository
-import subway.repository.StationRepository
 
 class LineService {
     fun init() {
-        addStation(1, "2호선", "교대역")
-        addStation(2, "2호선", "강남역")
-        addStation(3, "2호선", "역삼역")
+        addSection(1, "2호선", "교대역")
+        addSection(2, "2호선", "강남역")
+        addSection(3, "2호선", "역삼역")
 
-        addStation(1, "3호선", "교대역")
-        addStation(2, "3호선", "남부터미널역")
-        addStation(3, "3호선", "양재역")
-        addStation(4, "3호선", "매봉역")
+        addSection(1, "3호선", "교대역")
+        addSection(2, "3호선", "남부터미널역")
+        addSection(3, "3호선", "양재역")
+        addSection(4, "3호선", "매봉역")
 
-        addStation(1, "신분당선", "강남역")
-        addStation(2, "신분당선", "양재역")
-        addStation(3, "신분당선", "양재시민의숲역")
+        addSection(1, "신분당선", "강남역")
+        addSection(2, "신분당선", "양재역")
+        addSection(3, "신분당선", "양재시민의숲역")
     }
 
-    fun addStation(sequence: Int, lineName: String, stationName: String) {
+    fun addSection(sequence: Int, lineName: String, stationName: String) {
         val line = LineRepository.getLine(lineName)
         line.addStation(sequence, stationName)
     }
