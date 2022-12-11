@@ -10,6 +10,10 @@ class SubwayController(
 ) : Controller(inputView, outputView) {
     private val stationService = StationService()
     private val lineService = LineService()
+    private val stationController by lazy { StationController(inputView, outputView, stationService) }
+
+
+
 
     init {
         lineService.init()
@@ -28,7 +32,7 @@ class SubwayController(
 
     private fun performMainOption(option: String) {
         when (option) {
-            "1" -> manageStation()
+            "1" -> stationController.run()
             "2" -> manageLine()
             "3" -> manageSection()
             "4" -> showSubwayMap()
@@ -39,50 +43,6 @@ class SubwayController(
         val option = repeat(inputView::selectMainOption)
         outputView.printEnter()
         return option
-    }
-
-
-    /**
-     * 1. 역 관리 옵션
-     * */
-
-    private fun manageStation() {
-        when (selectSubwayManagementOption()) {
-            "1" -> repeat(this::addStation)
-            "2" -> repeat(this::removeStation)
-            "3" -> showStations()
-        }
-    }
-
-    private fun selectSubwayManagementOption(): String {
-        val option = repeat(inputView::selectSubwayManagementOption)
-        outputView.printEnter()
-        return option
-    }
-
-    private fun addStation() {
-        val addingSubway = inputView.inputAddingSubway()
-        stationService.addStation(addingSubway)
-        printAddingStationResult()
-    }
-
-    private fun removeStation() {
-        val removingSubway = inputView.inputRemovingSubway()
-        stationService.removeStation(removingSubway)
-        printRemovingStationResult()
-    }
-
-    private fun showStations() {
-        val stations = stationService.getStations()
-        outputView.printStations(stations.getStationsNames())
-    }
-
-    private fun printAddingStationResult() {
-        outputView.printMessage(SUCCESS_TO_ADD_STATION_MESSAGE)
-    }
-
-    private fun printRemovingStationResult() {
-        outputView.printMessage(SUCCESS_TO_REMOVE_STATION_MESSAGE)
     }
 
     /**
@@ -272,8 +232,6 @@ class SubwayController(
 
     companion object {
         private const val QUIT_OPTION = "Q"
-        private const val SUCCESS_TO_REMOVE_STATION_MESSAGE = "\n[INFO] 지하철 역이 삭제되었습니다.\n"
-        private const val SUCCESS_TO_ADD_STATION_MESSAGE = "\n[INFO] 지하철 역이 등록되었습니다.\n"
         private const val SUCCESS_TO_ADD_LINE_MESSAGE = "[INFO] 지하철 노선이 등록되었습니다.\n"
         private const val SUCCESS_TO_REMOVE_LINE_MESSAGE = "[INFO] 지하철 노선이 삭제되었습니다.\n"
         private const val SUCCESS_TO_ADD_SECTION_MESSAGE = "[INFO] 구간이 등록되었습니다."
