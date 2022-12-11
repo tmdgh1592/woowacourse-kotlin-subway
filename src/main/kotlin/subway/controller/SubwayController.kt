@@ -135,6 +135,16 @@ class SubwayController(
 
     private fun removeLine() {
         val removingLine = inputRemovingLine()
+        val removeResult = lineService.removeLine(removingLine)
+        printRemovingLineResult(removeResult)
+    }
+
+    private fun printRemovingLineResult(result: Boolean) {
+        if (result.not()) {
+            outputView.printMessage(INVALID_LINE_EXCEPTION_MESSAGE)
+            return
+        }
+        outputView.printMessage(SUCCESS_TO_REMOVE_LINE_MESSAGE)
     }
 
     private fun inputRemovingLine(): String {
@@ -177,6 +187,9 @@ class SubwayController(
         private const val SUCCESS_TO_REMOVE_STATION_MESSAGE = "\n[INFO] 지하철 역이 삭제되었습니다.\n"
         private const val SUCCESS_TO_ADD_STATION_MESSAGE = "\n[INFO] 지하철 역이 등록되었습니다.\n"
         private const val SUCCESS_TO_ADD_LINE_MESSAGE = "[INFO] 지하철 노선이 등록되었습니다.\n"
+        private const val SUCCESS_TO_REMOVE_LINE_MESSAGE = "[INFO] 지하철 노선이 삭제되었습니다.\n"
+
         private const val INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE = "[ERROR] 상행선과 하행선이 동일할 수 없습니다."
+        private const val INVALID_LINE_EXCEPTION_MESSAGE = "[ERROR] 존재하지 않는 노선입니다.\n"
     }
 }

@@ -33,6 +33,8 @@ class LineService {
         LineRepository.addLine(line)
     }
 
+    fun removeLine(lineName: String) = LineRepository.deleteLineByName(lineName)
+
     fun getSubwayMap(): Map<String, List<String>> {
         val lines = getAllLines()
         val subwayMap = hashMapOf<String, List<String>>()
