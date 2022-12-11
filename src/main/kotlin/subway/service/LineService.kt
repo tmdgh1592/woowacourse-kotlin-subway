@@ -24,6 +24,11 @@ class LineService {
         line.addStation(sequence, stationName)
     }
 
+    fun removeSection(lineName: String, stationName: String): Boolean {
+        val line = LineRepository.getLine(lineName)
+        return line.removeStation(stationName)
+    }
+
     fun addLine(lineName: String, upBound: String, downBound: String) {
         val line = Line(lineName).apply {
             addStation(1, upBound)

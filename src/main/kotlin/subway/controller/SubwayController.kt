@@ -185,7 +185,7 @@ class SubwayController(
      * */
 
     private fun manageSection() {
-        when(selectSectionManagementOption()) {
+        when (selectSectionManagementOption()) {
             "1" -> addSection()
             "2" -> removeSection()
         }
@@ -232,12 +232,13 @@ class SubwayController(
     private fun printAddingSectionResult() {
         outputView.printMessage(SUCCESS_TO_ADD_SECTION_MESSAGE)
     }
-    
+
     private fun removeSection() {
         val removingSectionLine = inputRemovingSectionLine()
         val removingSectionStation = inputRemovingSectionStation()
 
-        printRemovingSectionResult()
+        val removeSuccess = lineService.removeSection(removingSectionLine, removingSectionStation)
+        printRemovingSectionResult(removeSuccess)
     }
 
     private fun inputRemovingSectionLine(): String {
@@ -252,10 +253,13 @@ class SubwayController(
         return removingSectionStation
     }
 
-    private fun printRemovingSectionResult() {
-        outputView.printMessage(SUCCESS_TO_REMOVE_SECTION_MESSAGE)
+    private fun printRemovingSectionResult(removeSuccess: Boolean) {
+        if (removeSuccess) {
+            outputView.printMessage(SUCCESS_TO_REMOVE_SECTION_MESSAGE)
+        } else {
+            outputView.printMessage(INVALID_SECTION_EXCEPTION_MESSAGE)
+        }
     }
-
 
     /**
      * 4. 지하철 노선도 출력
@@ -277,5 +281,6 @@ class SubwayController(
 
         private const val INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE = "[ERROR] 상행선과 하행선이 동일할 수 없습니다."
         private const val INVALID_LINE_EXCEPTION_MESSAGE = "[ERROR] 존재하지 않는 노선입니다.\n"
+        private const val INVALID_SECTION_EXCEPTION_MESSAGE = "[ERROR] 존재하지 않는 노선 또는 역입니다."
     }
 }

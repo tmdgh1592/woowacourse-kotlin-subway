@@ -23,6 +23,9 @@ class Line(private val name: String) {
         stations.add(sequence - 1, Station(stationName))
     }
 
+    fun removeStation(stationName: String): Boolean =
+        stations.removeIf { it.getName() == stationName }
+
     private fun validateDuplication(newStationName: String) {
         stations.forEach { station ->
             val stationName = station.getName()
