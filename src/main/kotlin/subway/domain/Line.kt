@@ -10,6 +10,8 @@ class Line(private val name: String) {
         return true
     }
 
+    fun stations() = stations.toList()
+
     fun addStation(sequence: Int, stationName: String) {
         validateDuplication(stationName)
         validateSequence(sequence - 1)

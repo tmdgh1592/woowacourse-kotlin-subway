@@ -30,6 +30,7 @@ class SubwayController(
     private fun performMainOption(option: String) {
         when(option) {
             "1" -> manageSubway()
+            "4" -> showSubwayMap()
         }
     }
 
@@ -41,7 +42,7 @@ class SubwayController(
 
 
     /**
-     * 역 관리 옵션
+     * 1. 역 관리 옵션
      * */
 
     private fun manageSubway() {
@@ -81,6 +82,16 @@ class SubwayController(
 
     private fun printRemovingResult() {
         outputView.printMessage(SUCCESS_TO_REMOVE_STATION_MESSAGE)
+    }
+
+
+    /**
+     * 4. 지하철 노선도 출력
+     * */
+
+    private fun showSubwayMap() {
+        val subwayMap = lineService.getSubwayMap()
+        outputView.printSubwayMap(subwayMap)
     }
 
     companion object {

@@ -1,5 +1,6 @@
 package subway.service
 
+import subway.domain.Line
 import subway.repository.LineRepository
 
 class LineService {
@@ -21,5 +22,20 @@ class LineService {
     fun addStation(sequence: Int, lineName: String, stationName: String) {
         val line = LineRepository.getLine(lineName)
         line.addStation(sequence, stationName)
+    }
+
+    fun getSubwayMap(): Map<String, List<String>> {
+        val lines = getAllLines()
+        val subwayMap = hashMapOf<String, List<String>>()
+
+        lines.forEach { line ->
+            val stationsNames = line.stations().map { it.getName() }
+            subwayMap[line.getName()] = stationsNames
+        }
+        return subwayMap
+    }
+
+    private fun getAllLines(): List<Line> {
+        return LineRepository.lines()
     }
 }

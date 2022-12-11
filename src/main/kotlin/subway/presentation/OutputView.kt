@@ -9,6 +9,19 @@ class OutputView {
         printEnter()
     }
 
+    fun printSubwayMap(subwayMap: Map<String, List<String>>) {
+        printMessage("## 지하철 노선도")
+        subwayMap.entries.forEach { (line, stations) ->
+            printMessage(INFO_PREFIX + line)
+            printMessage("$INFO_PREFIX---")
+
+            printMessage(stations.joinToString("\n") {
+                INFO_PREFIX + it
+            })
+            printEnter()
+        }
+    }
+
     fun printMessage(message: String) = println(message)
 
     fun printEnter() = println()
