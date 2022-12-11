@@ -201,6 +201,8 @@ class SubwayController(
         val line = inputLine()
         val station = inputStation()
         val sequence = inputSequence()
+
+        printAddingSectionResult()
     }
 
     private fun inputLine(): String {
@@ -221,6 +223,10 @@ class SubwayController(
         return sequence
     }
 
+    private fun printAddingSectionResult() {
+        outputView.printMessage(SUCCESS_TO_ADD_SECTION_MESSAGE)
+    }
+
     /**
      * 4. 지하철 노선도 출력
      * */
@@ -236,6 +242,7 @@ class SubwayController(
         private const val SUCCESS_TO_ADD_STATION_MESSAGE = "\n[INFO] 지하철 역이 등록되었습니다.\n"
         private const val SUCCESS_TO_ADD_LINE_MESSAGE = "[INFO] 지하철 노선이 등록되었습니다.\n"
         private const val SUCCESS_TO_REMOVE_LINE_MESSAGE = "[INFO] 지하철 노선이 삭제되었습니다.\n"
+        private const val SUCCESS_TO_ADD_SECTION_MESSAGE = "[INFO] 구간이 등록되었습니다."
 
         private const val INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE = "[ERROR] 상행선과 하행선이 동일할 수 없습니다."
         private const val INVALID_LINE_EXCEPTION_MESSAGE = "[ERROR] 존재하지 않는 노선입니다.\n"
