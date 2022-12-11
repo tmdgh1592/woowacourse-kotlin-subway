@@ -1,8 +1,11 @@
 package subway
 
-import java.util.*
+import subway.controller.Controller
+import subway.controller.SubwayController
+import subway.presentation.InputView
+import subway.presentation.OutputView
 
 fun main() {
-    val scanner = Scanner(System.`in`)
-    // TODO: 프로그램 구현
+    val subwayController: Controller = SubwayController(InputView(), OutputView())
+    subwayController.run()
 }
