@@ -25,6 +25,12 @@ class InputView(
         return inputValidator.validateLineManagementOption(option)
     }
 
+    fun selectSectionManagementOption(): String {
+        println(SECTION_MANAGEMENT_SELECT_MESSAGE)
+        val option = Console.readLine()
+        return inputValidator.validateSectionManagementOption(option)
+    }
+
     fun inputAddingSubway(): String {
         println(SUBWAY_ADDING_INPUT_MESSAGE)
         return inputValidator.validateLength(Console.readLine())
@@ -63,6 +69,8 @@ class InputView(
             "## 역 관리 화면\n" + "1. 역 등록\n" + "2. 역 삭제\n" + "3. 역 조회\n" + "B. 돌아가기\n\n" + "## 원하는 기능을 선택하세요."
         private const val LINE_MANAGEMENT_SELECT_MESSAGE =
             "## 노선 관리 화면\n" + "1. 노선 등록\n" + "2. 노선 삭제\n" + "3. 노선 조회\n" + "B. 돌아가기\n" + "\n" + "## 원하는 기능을 선택하세요."
+        private const val SECTION_MANAGEMENT_SELECT_MESSAGE =
+            "## 구간 관리 화면\n" + "1. 구간 등록\n" + "2. 구간 삭제\n" + "B. 돌아가기\n" + "\n" + "## 원하는 기능을 선택하세요."
 
         private const val SUBWAY_ADDING_INPUT_MESSAGE = "## 등록할 역 이름을 입력하세요."
         private const val SUBWAY_DELETE_INPUT_MESSAGE = "## 삭제할 역 이름을 입력하세요."

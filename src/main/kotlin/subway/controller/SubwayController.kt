@@ -30,6 +30,7 @@ class SubwayController(
         when (option) {
             "1" -> manageSubway()
             "2" -> manageLine()
+            "3" -> manageSection()
             "4" -> showSubwayMap()
         }
     }
@@ -177,6 +178,23 @@ class SubwayController(
     private fun showLines() {
         val lines = lineService.getAllLines()
         outputView.printLines(lines.map { it.toString() })
+    }
+
+    /**
+     * 3. 구간 관 옵션
+     * */
+
+    private fun manageSection() {
+        when(selectSectionManagementOption()) {
+
+        }
+
+    }
+
+    private fun selectSectionManagementOption(): String {
+        val option = repeat(inputView::selectSectionManagementOption)
+        outputView.printEnter()
+        return option
     }
 
     /**

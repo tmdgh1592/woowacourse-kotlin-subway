@@ -22,6 +22,13 @@ class InputValidator {
         return option
     }
 
+    fun validateSectionManagementOption(option: String): String {
+        if (option !in listOf("1", "2", "B")) {
+            throw IllegalArgumentException(INVALID_OPTION_EXCEPTION_MESSAGE)
+        }
+        return option
+    }
+
     fun validateLength(text: String, length: Int = 2): String {
         if (text.length < length) {
             throw IllegalArgumentException(INVALID_LENGTH_EXCEPTION_MESSAGE.format(length))
