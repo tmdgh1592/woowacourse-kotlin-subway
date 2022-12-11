@@ -187,6 +187,7 @@ class SubwayController(
     private fun manageSection() {
         when(selectSectionManagementOption()) {
             "1" -> addSection()
+            "2" -> removeSection()
         }
 
     }
@@ -231,6 +232,17 @@ class SubwayController(
     private fun printAddingSectionResult() {
         outputView.printMessage(SUCCESS_TO_ADD_SECTION_MESSAGE)
     }
+    
+    private fun removeSection() {
+        val removingSectionLine = inputRemovingSectionLine()
+    }
+
+    private fun inputRemovingSectionLine(): String {
+        val removingSectionLine = repeat(inputView::inputRemovingSectionLine)
+        outputView.printEnter()
+        return removingSectionLine
+    }
+
 
     /**
      * 4. 지하철 노선도 출력

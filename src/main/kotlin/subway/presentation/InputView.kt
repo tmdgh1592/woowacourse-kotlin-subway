@@ -76,6 +76,11 @@ class InputView(
         return inputValidator.validateNumber(Console.readLine())
     }
 
+    fun inputRemovingSectionLine(): String {
+        println(SECTION_REMOVING_INPUT_MESSAGE)
+        return inputValidator.validateLength(Console.readLine())
+    }
+
     companion object {
         private const val MAIN_OPTION_SELECT_MESSAGE =
             "## 메인 화면\n" + "1. 역 관리\n" + "2. 노선 관리\n" + "3. 구간 관리\n" + "4. 지하철 노선도 출력\n" + "Q. 종료\n\n" + "## 원하는 기능을 선택하세요."
@@ -94,6 +99,8 @@ class InputView(
 
         private const val UP_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 상행 종점역 이름을 입력하세요."
         private const val DOWN_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 하행 종점역 이름을 입력하세요."
+
+        private const val SECTION_REMOVING_INPUT_MESSAGE = "## 삭제할 구간의 노선을 입력하세요."
 
         private const val LINE_INPUT_MESSAGE = "## 노선을 입력하세요."
         private const val STATION_INPUT_MESSAGE = "## 역이름을 입력하세요."
