@@ -104,6 +104,7 @@ class SubwayController(
     private fun addLine() {
         val lineName = inputAddingLine()
         val upBoundStation = inputUpBoundStation()
+        val downBoundStation = inputDownBoundStation()
     }
 
     private fun inputAddingLine(): String {
@@ -116,6 +117,12 @@ class SubwayController(
         val upBoundStation = repeat(inputView::inputUpBoundStation)
         outputView.printEnter()
         return upBoundStation
+    }
+
+    private fun inputDownBoundStation(): String {
+        val downBoundStation = repeat(inputView::inputDownBoundStation)
+        outputView.printEnter()
+        return downBoundStation
     }
 
     /**
