@@ -105,6 +105,8 @@ class SubwayController(
         val lineName = inputAddingLine()
         val upBoundStation = inputUpBoundStation()
         val downBoundStation = inputDownBoundStation()
+
+        printAddingLineResult()
     }
 
     private fun inputAddingLine(): String {
@@ -125,6 +127,10 @@ class SubwayController(
         return downBoundStation
     }
 
+    private fun printAddingLineResult() {
+        outputView.printMessage(SUCCESS_TO_ADD_LINE_MESSAGE)
+    }
+
     /**
      * 4. 지하철 노선도 출력
      * */
@@ -138,5 +144,6 @@ class SubwayController(
         private const val QUIT_OPTION = "Q"
         private const val SUCCESS_TO_REMOVE_STATION_MESSAGE = "\n[INFO] 지하철 역이 삭제되었습니다.\n"
         private const val SUCCESS_TO_ADD_STATION_MESSAGE = "\n[INFO] 지하철 역이 등록되었습니다.\n"
+        private const val SUCCESS_TO_ADD_LINE_MESSAGE = "[INFO] 지하철 노선이 등록되었습니다.\n"
     }
 }
