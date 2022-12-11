@@ -1,6 +1,5 @@
 package subway.controller
 
-import camp.nextstep.edu.missionutils.Console
 import subway.presentation.InputView
 import subway.presentation.OutputView
 import subway.service.LineService
@@ -63,13 +62,13 @@ class SubwayController(
     private fun addStation() {
         val addingSubway = inputView.inputAddingSubway()
         stationService.addStation(addingSubway)
-        printAddingResult()
+        printAddingStationResult()
     }
 
     private fun removeStation() {
         val removingSubway = inputView.inputRemovingSubway()
         stationService.removeStation(removingSubway)
-        printRemovingResult()
+        printRemovingStationResult()
     }
 
     private fun showStations() {
@@ -77,11 +76,11 @@ class SubwayController(
         outputView.printStations(stations.getStationsNames())
     }
 
-    private fun printAddingResult() {
+    private fun printAddingStationResult() {
         outputView.printMessage(SUCCESS_TO_ADD_STATION_MESSAGE)
     }
 
-    private fun printRemovingResult() {
+    private fun printRemovingStationResult() {
         outputView.printMessage(SUCCESS_TO_REMOVE_STATION_MESSAGE)
     }
 
