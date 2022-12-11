@@ -77,7 +77,12 @@ class InputView(
     }
 
     fun inputRemovingSectionLine(): String {
-        println(SECTION_REMOVING_INPUT_MESSAGE)
+        println(SECTION_LINE_REMOVING_INPUT_MESSAGE)
+        return inputValidator.validateLength(Console.readLine())
+    }
+
+    fun inputRemovingSectionStation(): String {
+        println(SECTION_STATION_REMOVING_INPUT_MESSAGE)
         return inputValidator.validateLength(Console.readLine())
     }
 
@@ -100,7 +105,8 @@ class InputView(
         private const val UP_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 상행 종점역 이름을 입력하세요."
         private const val DOWN_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 하행 종점역 이름을 입력하세요."
 
-        private const val SECTION_REMOVING_INPUT_MESSAGE = "## 삭제할 구간의 노선을 입력하세요."
+        private const val SECTION_LINE_REMOVING_INPUT_MESSAGE = "## 삭제할 구간의 노선을 입력하세요."
+        private const val SECTION_STATION_REMOVING_INPUT_MESSAGE = "## 삭제할 구간의 역을 입력하세요."
 
         private const val LINE_INPUT_MESSAGE = "## 노선을 입력하세요."
         private const val STATION_INPUT_MESSAGE = "## 역이름을 입력하세요."

@@ -235,12 +235,20 @@ class SubwayController(
     
     private fun removeSection() {
         val removingSectionLine = inputRemovingSectionLine()
+        val removingSectionStation = inputRemovingSectionStation()
+
     }
 
     private fun inputRemovingSectionLine(): String {
         val removingSectionLine = repeat(inputView::inputRemovingSectionLine)
         outputView.printEnter()
         return removingSectionLine
+    }
+
+    private fun inputRemovingSectionStation(): String {
+        val removingSectionStation = repeat(inputView::inputRemovingSectionStation)
+        outputView.printEnter()
+        return removingSectionStation
     }
 
 
