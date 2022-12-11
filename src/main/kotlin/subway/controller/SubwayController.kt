@@ -107,9 +107,9 @@ class SubwayController(
     }
 
     private fun inputAddingLine(): String {
-        val option = repeat(inputView::inputAddingLine)
+        val lineName = repeat(inputView::inputAddingLine)
         outputView.printEnter()
-        return option
+        return lineName
     }
 
     private fun inputUpBoundStation(): String {
