@@ -22,6 +22,14 @@ class OutputView {
         }
     }
 
+    fun printLines(lines: List<String>) {
+        printMessage("## 노선 목록")
+        printMessage(lines.joinToString("\n") {
+            INFO_PREFIX + it
+        })
+        printEnter()
+    }
+
     fun printMessage(message: String) = println(message)
 
     fun printEnter() = println()

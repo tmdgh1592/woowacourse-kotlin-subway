@@ -46,7 +46,5 @@ class LineService {
         return subwayMap
     }
 
-    private fun getAllLines(): List<Line> {
-        return LineRepository.lines()
-    }
+    fun getAllLines(): List<Line> = LineRepository.lines()
 }

@@ -1,7 +1,5 @@
 package subway.domain
 
-import subway.controller.SubwayController
-
 class Line(private val name: String) {
     private val stations = arrayListOf<Station>()
 
@@ -46,6 +44,8 @@ class Line(private val name: String) {
         }
         return false
     }
+
+    override fun toString(): String = name
 
     companion object {
         private const val ERROR_PREFIX = "[ERROR]"

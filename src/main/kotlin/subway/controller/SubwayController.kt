@@ -92,6 +92,7 @@ class SubwayController(
         when (selectLineManagementOption()) {
             "1" -> addLine()
             "2" -> removeLine()
+            "3" -> showLines()
         }
     }
 
@@ -133,6 +134,22 @@ class SubwayController(
         return downBoundStation
     }
 
+    private fun validateExistingStation(downBoundStation: String) {
+        stationService.isExistStation(downBoundStation)
+    }
+
+    private fun isSameBoundStation(upBoundStation: String, downBoundStation: String): Boolean {
+        if (upBoundStation == downBoundStation) {
+            try {
+                throw IllegalArgumentException(INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE)
+            } catch (error: IllegalArgumentException) {
+                outputView.printError(error)
+                return true
+            }
+        }
+        return false
+    }
+
     private fun removeLine() {
         val removingLine = inputRemovingLine()
         val removeResult = lineService.removeLine(removingLine)
@@ -153,24 +170,13 @@ class SubwayController(
         return removingLine
     }
 
-    private fun validateExistingStation(downBoundStation: String) {
-        stationService.isExistStation(downBoundStation)
-    }
-
-    private fun isSameBoundStation(upBoundStation: String, downBoundStation: String): Boolean {
-        if (upBoundStation == downBoundStation) {
-            try {
-                throw IllegalArgumentException(INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE)
-            } catch (error: IllegalArgumentException) {
-                outputView.printError(error)
-                return true
-            }
-        }
-        return false
-    }
-
     private fun printAddingLineResult() {
         outputView.printMessage(SUCCESS_TO_ADD_LINE_MESSAGE)
+    }
+
+    private fun showLines() {
+        val lines = lineService.getAllLines()
+        outputView.printLines(lines.map { it.toString() })
     }
 
     /**
