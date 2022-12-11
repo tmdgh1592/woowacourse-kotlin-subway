@@ -40,6 +40,11 @@ class InputView(
         return inputValidator.validateLength(Console.readLine())
     }
 
+    fun inputUpBoundStation(): String {
+        println(UP_BOUND_STATION_INPUT_MESSAGE)
+        return Console.readLine()
+    }
+
 
     companion object {
         private const val MAIN_OPTION_SELECT_MESSAGE =
@@ -53,5 +58,6 @@ class InputView(
         private const val SUBWAY_DELETE_INPUT_MESSAGE = "## 삭제할 역 이름을 입력하세요."
 
         private const val LINE_ADDING_INPUT_MESSAGE = "## 등록할 노선 이름을 입력하세요."
+        private const val UP_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 상행 종점역 이름을 입력하세요."
     }
 }
