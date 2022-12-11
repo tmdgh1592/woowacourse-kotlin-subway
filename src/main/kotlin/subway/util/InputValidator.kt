@@ -36,9 +36,14 @@ class InputValidator {
         return text
     }
 
+    fun validateNumber(number: String): Int {
+        return number.toIntOrNull() ?: throw IllegalArgumentException(NON_NUMBER_EXCEPTION_MESSAGE)
+    }
+
     companion object {
         private const val ERROR_PREFIX = "[ERROR]"
         private const val INVALID_OPTION_EXCEPTION_MESSAGE = "$ERROR_PREFIX 선택할 수 없는 기능입니다."
         private const val INVALID_LENGTH_EXCEPTION_MESSAGE = "$ERROR_PREFIX 길이가 %d 이상이어야 합니다."
+        private const val NON_NUMBER_EXCEPTION_MESSAGE = "$ERROR_PREFIX 길이가 %d 이상이어야 합니다."
     }
 }

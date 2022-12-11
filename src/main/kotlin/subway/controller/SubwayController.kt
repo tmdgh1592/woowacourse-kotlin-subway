@@ -186,7 +186,7 @@ class SubwayController(
 
     private fun manageSection() {
         when(selectSectionManagementOption()) {
-
+            "1" -> addSection()
         }
 
     }
@@ -195,6 +195,30 @@ class SubwayController(
         val option = repeat(inputView::selectSectionManagementOption)
         outputView.printEnter()
         return option
+    }
+
+    private fun addSection() {
+        val line = inputLine()
+        val station = inputStation()
+        val sequence = inputSequence()
+    }
+
+    private fun inputLine(): String {
+        val line = inputView.inputLine()
+        outputView.printEnter()
+        return line
+    }
+
+    private fun inputStation(): String {
+        val station = inputView.inputStation()
+        outputView.printEnter()
+        return station
+    }
+
+    private fun inputSequence(): Int {
+        val sequence = repeat(inputView::inputSequence)
+        outputView.printEnter()
+        return sequence
     }
 
     /**

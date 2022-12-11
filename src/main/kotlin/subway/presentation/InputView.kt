@@ -61,6 +61,20 @@ class InputView(
         return inputValidator.validateLength(Console.readLine())
     }
 
+    fun inputLine(): String {
+        println(LINE_INPUT_MESSAGE)
+        return Console.readLine()
+    }
+
+    fun inputStation(): String {
+        println(STATION_INPUT_MESSAGE)
+        return Console.readLine()
+    }
+
+    fun inputSequence(): Int {
+        println(SEQUENCE_INPUT_MESSAGE)
+        return inputValidator.validateNumber(Console.readLine())
+    }
 
     companion object {
         private const val MAIN_OPTION_SELECT_MESSAGE =
@@ -80,5 +94,9 @@ class InputView(
 
         private const val UP_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 상행 종점역 이름을 입력하세요."
         private const val DOWN_BOUND_STATION_INPUT_MESSAGE = "## 등록할 노선의 하행 종점역 이름을 입력하세요."
+
+        private const val LINE_INPUT_MESSAGE = "## 노선을 입력하세요."
+        private const val STATION_INPUT_MESSAGE = "## 역이름을 입력하세요."
+        private const val SEQUENCE_INPUT_MESSAGE = "## 순서를 입력하세요."
     }
 }
