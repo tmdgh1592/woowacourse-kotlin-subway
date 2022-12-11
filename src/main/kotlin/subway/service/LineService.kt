@@ -1,6 +1,7 @@
 package subway.service
 
 import subway.domain.Line
+import subway.domain.Lines
 import subway.repository.LineRepository
 
 class LineService {
@@ -40,15 +41,9 @@ class LineService {
     fun removeLine(lineName: String) = LineRepository.deleteLineByName(lineName)
 
     fun getSubwayMap(): Map<String, List<String>> {
-        val lines = getAllLines()
-        val subwayMap = hashMapOf<String, List<String>>()
-
-        lines.forEach { line ->
-            val stationsNames = line.stations().map { it.getName() }
-            subwayMap[line.getName()] = stationsNames
-        }
-        return subwayMap
+        val lines = getLines()
+        return lines.makeSubwayMap()
     }
 
-    fun getAllLines(): List<Line> = LineRepository.lines()
+    fun getLines(): Lines = Lines(LineRepository.lines())
 }

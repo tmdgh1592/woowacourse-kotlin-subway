@@ -176,8 +176,8 @@ class SubwayController(
     }
 
     private fun showLines() {
-        val lines = lineService.getAllLines()
-        outputView.printLines(lines.map { it.toString() })
+        val lines = lineService.getLines()
+        outputView.printLines(lines.getLinesAsText())
     }
 
     /**
