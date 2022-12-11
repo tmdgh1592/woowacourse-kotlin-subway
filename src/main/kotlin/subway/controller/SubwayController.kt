@@ -30,6 +30,7 @@ class SubwayController(
     private fun performMainOption(option: String) {
         when(option) {
             "1" -> manageSubway()
+            "2" -> manageLine()
             "4" -> showSubwayMap()
         }
     }
@@ -82,6 +83,22 @@ class SubwayController(
 
     private fun printRemovingResult() {
         outputView.printMessage(SUCCESS_TO_REMOVE_STATION_MESSAGE)
+    }
+
+    /**
+     * 2. 노선 관리 옵션
+     * */
+
+    private fun manageLine() {
+        when(selectLineManagementOption()) {
+
+        }
+    }
+
+    private fun selectLineManagementOption(): String {
+        val option = repeat(inputView::selectLineManagementOption)
+        outputView.printEnter()
+        return option
     }
 
 
