@@ -17,6 +17,6 @@ class InputValidator {
 
     companion object {
         private const val ERROR_PREFIX = "[ERROR]"
-        const val INVALID_OPTION_EXCEPTION_MESSAGE = "$ERROR_PREFIX 존재하지 않는 옵션입니다."
+        const val INVALID_OPTION_EXCEPTION_MESSAGE = "$ERROR_PREFIX 선택할 수 없는 기능입니다."
     }
 }
