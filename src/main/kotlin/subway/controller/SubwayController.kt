@@ -28,7 +28,7 @@ class SubwayController(
 
     private fun performMainOption(option: String) {
         when (option) {
-            "1" -> manageSubway()
+            "1" -> manageStation()
             "2" -> manageLine()
             "3" -> manageSection()
             "4" -> showSubwayMap()
@@ -46,7 +46,7 @@ class SubwayController(
      * 1. 역 관리 옵션
      * */
 
-    private fun manageSubway() {
+    private fun manageStation() {
         when (selectSubwayManagementOption()) {
             "1" -> repeat(this::addStation)
             "2" -> repeat(this::removeStation)
