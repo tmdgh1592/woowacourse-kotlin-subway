@@ -91,6 +91,7 @@ class SubwayController(
     private fun manageLine() {
         when (selectLineManagementOption()) {
             "1" -> addLine()
+            "2" -> removeLine()
         }
     }
 
@@ -130,6 +131,16 @@ class SubwayController(
         validateExistingStation(downBoundStation)
         outputView.printEnter()
         return downBoundStation
+    }
+
+    private fun removeLine() {
+        val removingLine = inputRemovingLine()
+    }
+
+    private fun inputRemovingLine(): String {
+        val removingLine = repeat(inputView::inputRemovingLine)
+        outputView.printEnter()
+        return removingLine
     }
 
     private fun validateExistingStation(downBoundStation: String) {
