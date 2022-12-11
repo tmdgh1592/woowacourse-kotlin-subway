@@ -27,7 +27,7 @@ class SubwayController(
      * */
 
     private fun performMainOption(option: String) {
-        when(option) {
+        when (option) {
             "1" -> manageSubway()
             "2" -> manageLine()
             "4" -> showSubwayMap()
@@ -46,7 +46,7 @@ class SubwayController(
      * */
 
     private fun manageSubway() {
-        when(selectSubwayManagementOption()) {
+        when (selectSubwayManagementOption()) {
             "1" -> repeat(this::addStation)
             "2" -> repeat(this::removeStation)
             "3" -> showStations()
@@ -89,7 +89,7 @@ class SubwayController(
      * */
 
     private fun manageLine() {
-        when(selectLineManagementOption()) {
+        when (selectLineManagementOption()) {
             "1" -> addLine()
         }
     }
@@ -102,9 +102,13 @@ class SubwayController(
 
     private fun addLine() {
         val lineName = inputAddingLine()
-        val upBoundStation = inputUpBoundStation()
-        val downBoundStation = inputDownBoundStation()
+        val upBoundStation = repeat(this::inputUpBoundStation)
+        val downBoundStation = repeat(this::inputDownBoundStation)
+        if (isSameBoundStation(upBoundStation, downBoundStation)) {
+            return
+        }
 
+        lineService.addLine(lineName, upBoundStation, downBoundStation)
         printAddingLineResult()
     }
 
@@ -116,14 +120,32 @@ class SubwayController(
 
     private fun inputUpBoundStation(): String {
         val upBoundStation = repeat(inputView::inputUpBoundStation)
+        validateExistingStation(upBoundStation)
         outputView.printEnter()
         return upBoundStation
     }
 
     private fun inputDownBoundStation(): String {
         val downBoundStation = repeat(inputView::inputDownBoundStation)
+        validateExistingStation(downBoundStation)
         outputView.printEnter()
         return downBoundStation
+    }
+
+    private fun validateExistingStation(downBoundStation: String) {
+        stationService.isExistStation(downBoundStation)
+    }
+
+    private fun isSameBoundStation(upBoundStation: String, downBoundStation: String): Boolean {
+        if (upBoundStation == downBoundStation) {
+            try {
+                throw IllegalArgumentException(INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE)
+            } catch (error: IllegalArgumentException) {
+                outputView.printError(error)
+                return true
+            }
+        }
+        return false
     }
 
     private fun printAddingLineResult() {
@@ -144,5 +166,6 @@ class SubwayController(
         private const val SUCCESS_TO_REMOVE_STATION_MESSAGE = "\n[INFO] 지하철 역이 삭제되었습니다.\n"
         private const val SUCCESS_TO_ADD_STATION_MESSAGE = "\n[INFO] 지하철 역이 등록되었습니다.\n"
         private const val SUCCESS_TO_ADD_LINE_MESSAGE = "[INFO] 지하철 노선이 등록되었습니다.\n"
+        private const val INVALID_DOWN_BOUND_STATION_EXCEPTION_MESSAGE = "[ERROR] 상행선과 하행선이 동일할 수 없습니다."
     }
 }

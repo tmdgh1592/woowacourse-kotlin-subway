@@ -2,6 +2,7 @@ package subway.service
 
 import subway.domain.Line
 import subway.repository.LineRepository
+import subway.repository.StationRepository
 
 class LineService {
     fun init() {
@@ -22,6 +23,14 @@ class LineService {
     fun addStation(sequence: Int, lineName: String, stationName: String) {
         val line = LineRepository.getLine(lineName)
         line.addStation(sequence, stationName)
+    }
+
+    fun addLine(lineName: String, upBound: String, downBound: String) {
+        val line = Line(lineName).apply {
+            addStation(1, upBound)
+            addStation(2, downBound)
+        }
+        LineRepository.addLine(line)
     }
 
     fun getSubwayMap(): Map<String, List<String>> {

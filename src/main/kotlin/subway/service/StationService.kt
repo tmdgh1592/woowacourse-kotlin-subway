@@ -27,6 +27,14 @@ class StationService {
         }
     }
 
+    fun isExistStation(station: String): Boolean {
+        val isExist = StationRepository.isExist(station)
+        if (isExist.not()) {
+            throw IllegalArgumentException(NOT_EXIST_STATION_EXCEPTION_MESSAGE)
+        }
+        return isExist
+    }
+
     companion object {
         private const val ERROR_PREFIX = "[ERROR]"
         private const val UNABLE_TO_REMOVE_STATION_EXCEPTION_MESSAGE = "$ERROR_PREFIX 노선에 추가된 역은 제거할 수 없습니다."

@@ -1,5 +1,7 @@
 package subway.domain
 
+import subway.controller.SubwayController
+
 class Line(private val name: String) {
     private val stations = arrayListOf<Station>()
 
